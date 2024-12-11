@@ -7,7 +7,7 @@
       default: '**/*Tests.csproj'
     - name: runTests
       type: boolean
-      default: false  
+      default: true  
 
   steps:
     - task: DotNetCoreCLI@2
@@ -20,7 +20,7 @@
       inputs:
         command: 'Test'
         projects: ${{parameters.mainproject}}
-      condition: eq(${{parameters.runTests}}, false)        
+      condition: eq(${{parameters.runTests}}, true)        
     - task: DotNetCoreCLI@2
       displayName: 'publish $(Build.Repository.Name)'
       inputs:
