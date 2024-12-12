@@ -20,23 +20,24 @@ steps:
       displayName: 'build the maven code'
       inputs:
         mavenPomFile: pom.xml
-        goals: ${{parameters.goals}}
+        goals: ${{ parameters.goals }}
         publishJUnitResults: true
-        testResultsFiles: ${{parameters.testResultsFiles}}
-      condition: eq('${{parameters.specificversion}}', '')  
+        testResultsFiles: ${{ parameters.testResultsFiles }}
+      condition: eq('${{ parameters.specificversion }}', '')  
 
     - task: Maven@4
       displayName: 'publish the code maven'
       inputs:
         mavenPomFile: pom.xml
-        goals: ${{parameters.goals}}
+        goals: ${{ parameters.goals}}
         publishJUnitResults: true
-        testResultsFiles: ${{parameters.testResultsFiles}}
-        jdkVersionOption: ${{parameters.specificversion}}   
+        testResultsFiles: ${{ parameters.testResultsFiles }}
+        jdkVersionOption: ${{ parameters.specificversion }}   
+      condition: ne('${{ parameters.specificversion }}', '')
 
     - task: CopyFiles@2
       inputs:
-        contents: ${{parameters.artifactPath}}
+        contents: ${{ parameters.artifactPath }}
         targetFolder: $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
       inputs:
