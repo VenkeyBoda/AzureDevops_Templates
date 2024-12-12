@@ -23,7 +23,7 @@ steps:
         goals: ${{ parameters.goals }}
         publishJUnitResults: true
         testResultsFiles: ${{ parameters.testResultsFiles }}
-      condition: eq('${{ parameters.specificversion }}', '')  
+      #condition: eq('${{ parameters.specificversion }}', '')  
 
     - task: Maven@4
       displayName: 'publish the code maven'
