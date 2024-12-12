@@ -14,19 +14,19 @@
       displayName: Build the code
       inputs:
         command: 'build'
-        projects: ${{parameters.mainproject}}
+        projects: ${{ parameters.mainproject }}
     - task: DotNetCoreCLI@02
       displayName: Test the code
       inputs:
         command: 'Test'
-        projects: ${{parameters.mainproject}}
-      condition: eq(${{parameters.runTests}}, true)        
+        projects: ${{ parameters.mainproject }}
+      condition: eq('${{ parameters.runTests }}', true)        
     - task: DotNetCoreCLI@2
       displayName: 'publish $(Build.Repository.Name)'
       inputs:
         command: 'publish'
         publishWebProjects: false
-        projects: ${{parameters.mainproject}}
+        projects: ${{ parameters.mainproject }}
         arguments: '-o $(Build.ArtifactStagingDirectory)/Output'
         zipAfterPublish: true
         modifyOutputPath: true
