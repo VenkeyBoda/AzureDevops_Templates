@@ -1,0 +1,9 @@
+---
+
+    steps:
+      - template: ./maven.build.yaml
+        parameters:
+          goals: 'package'
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          specificversion: ''
+          artifactPath: '**/spring-petclinic*.jar'
