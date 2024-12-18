@@ -14,7 +14,7 @@ parameters:
     - name: targetDeploySnapshotRepo
       type: string
       default: 'spring_petclinic-libs-snapshot'
-  steps:
+steps:
     - task: JFrogMaven@1
       inputs:
         mavenPomFile: 'pom.xml'
